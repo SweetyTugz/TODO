@@ -5,6 +5,11 @@ from bson.objectid import ObjectId
 
 main = Blueprint('main', __name__)
 
+@main.route('/')
+def index():
+    todos_collection = mongo.db.todos
+    todos = todos_collection.find()
+    return render_template('index.html', todos=todos)
 
 
 
